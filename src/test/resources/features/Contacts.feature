@@ -62,3 +62,25 @@ Feature: Contacts page
       | storemanager85 | Stephan   | Haley     |
 
 
+    Scenario: Contact test with email
+      Given the user logged in as "sales manager"
+      And the user navigates to "Customers" "Contacts"
+      When the user clicks the "emailwillcomehere" from contacts
+      Then the information should be same with database
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
