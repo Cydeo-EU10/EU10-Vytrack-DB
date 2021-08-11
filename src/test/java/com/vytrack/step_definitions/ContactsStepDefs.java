@@ -65,15 +65,20 @@ public class ContactsStepDefs {
     }
 
     @When("the user clicks the {string} from contacts")
-    public void the_user_clicks_the_from_contacts(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_user_clicks_the_from_contacts(String email) {
+
+        BrowserUtils.waitFor(3);
+        //we have ready method to find email webelement in pom class
+        //we just get the email from feature file and pass to that method and click it
+        ContactsPage contactsPage = new ContactsPage();
+        contactsPage.getContactEmail(email).click();
+
     }
 
     @Then("the information should be same with database")
     public void the_information_should_be_same_with_database() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+     BrowserUtils.waitFor(4);
+
     }
 
 
