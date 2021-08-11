@@ -3,6 +3,7 @@ package com.vytrack.step_definitions;
 import com.vytrack.pages.*;
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.DBUtils;
 import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -94,12 +95,20 @@ public class ContactsStepDefs {
                 "where e.email = 'cherrylarmstrong@yahoo.com'";
 
         //create the connection to qa3 env
+        DBUtils.createConnection();
         //get the data in java collections
+        Map<String, Object> rowMap = DBUtils.getRowMap(query);
+        String expectedFullname = (String) rowMap.get("full_name");
+        String expectedEmail = (String) rowMap.get("email");
+
+        System.out.println("expectedFullname = " + expectedFullname);
+        System.out.println("expectedEmail = " + expectedEmail);
         //close connection
+        DBUtils.destroy();
 
-
-    //assertion, compare UI vs DATABASE information
-
+        //assertion, compare UI vs DATABASE information
+        Assert.assertEquals(expectedFullname,actualFullname);
+        Assert.assertEquals(expectedEmail,actualEmail);
 
     }
 
