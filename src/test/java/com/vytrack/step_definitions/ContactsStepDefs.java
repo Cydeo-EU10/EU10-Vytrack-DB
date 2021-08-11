@@ -78,6 +78,28 @@ public class ContactsStepDefs {
     @Then("the information should be same with database")
     public void the_information_should_be_same_with_database() {
      BrowserUtils.waitFor(4);
+     //get the information from UI
+        ContactInfoPage contactInfoPage = new ContactInfoPage();
+        String actualFullname = contactInfoPage.contactFullName.getText();
+        String actualEmail = contactInfoPage.email.getText();
+
+        System.out.println("actualFullname = " + actualFullname);
+        System.out.println("actualEmail = " + actualEmail);
+
+
+    //get information from database
+        String query= "select concat(first_name,' ',last_name) \"full_name\", e.email \n" +
+                "from orocrm_contact c inner join orocrm_contact_email e \n" +
+                "on c.id = e.owner_id \n" +
+                "where e.email = 'cherrylarmstrong@yahoo.com'";
+
+        //create the connection to qa3 env
+        //get the data in java collections
+        //close connection
+
+
+    //assertion, compare UI vs DATABASE information
+
 
     }
 
