@@ -95,7 +95,7 @@ public class ContactsStepDefs {
                 "where e.email = 'cherrylarmstrong@yahoo.com'";
 
         //create the connection to qa3 env
-        DBUtils.createConnection();
+       // DBUtils.createConnection();
         //get the data in java collections
         Map<String, Object> rowMap = DBUtils.getRowMap(query);
         String expectedFullname = (String) rowMap.get("full_name");
@@ -104,7 +104,7 @@ public class ContactsStepDefs {
         System.out.println("expectedFullname = " + expectedFullname);
         System.out.println("expectedEmail = " + expectedEmail);
         //close connection
-        DBUtils.destroy();
+       // DBUtils.destroy();
 
         //assertion, compare UI vs DATABASE information
         Assert.assertEquals(expectedFullname,actualFullname);
@@ -112,6 +112,40 @@ public class ContactsStepDefs {
 
     }
 
+    @Then("the information for {string} should be same with database")
+    public void the_information_for_should_be_same_with_database(String email) {
+        BrowserUtils.waitFor(4);
+        //get the information from UI
+        ContactInfoPage contactInfoPage = new ContactInfoPage();
+        String actualFullname = contactInfoPage.contactFullName.getText();
+        String actualEmail = contactInfoPage.email.getText();
+
+        System.out.println("actualFullname = " + actualFullname);
+        System.out.println("actualEmail = " + actualEmail);
+
+
+        //get information from database
+        String query= "select concat(first_name,' ',last_name) \"full_name\", e.email \n" +
+                "from orocrm_contact c inner join orocrm_contact_email e \n" +
+                "on c.id = e.owner_id \n" +
+                "where e.email = '"+email+"'";
+
+        //create the connection to qa3 env
+        // DBUtils.createConnection();
+        //get the data in java collections
+        Map<String, Object> rowMap = DBUtils.getRowMap(query);
+        String expectedFullname = (String) rowMap.get("full_name");
+        String expectedEmail = (String) rowMap.get("email");
+
+        System.out.println("expectedFullname = " + expectedFullname);
+        System.out.println("expectedEmail = " + expectedEmail);
+        //close connection
+        // DBUtils.destroy();
+
+        //assertion, compare UI vs DATABASE information
+        Assert.assertEquals(expectedFullname,actualFullname);
+        Assert.assertEquals(expectedEmail,actualEmail);
+    }
 
 
 
