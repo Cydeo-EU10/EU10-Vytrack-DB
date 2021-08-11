@@ -64,6 +64,20 @@ public class ContactsStepDefs {
 
     }
 
+    @When("the user clicks the {string} from contacts")
+    public void the_user_clicks_the_from_contacts(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("the information should be same with database")
+    public void the_information_should_be_same_with_database() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+
+
 
 
 }
