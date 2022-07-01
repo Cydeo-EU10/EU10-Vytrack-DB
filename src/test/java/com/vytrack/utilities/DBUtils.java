@@ -21,9 +21,9 @@ public class DBUtils {
     }
 
     public static void createConnection() {
-        String dbUrl = ConfigurationReader.get("qa3.database.url");
-        String dbUsername = ConfigurationReader.get("qa3.database.username");
-        String dbPassword = ConfigurationReader.get("qa3.database.password");
+        String dbUrl = ConfigurationReader.get("qa2.database.url");
+        String dbUsername = ConfigurationReader.get("qa2.database.username");
+        String dbPassword = ConfigurationReader.get("qa2.database.password");
         try {
             connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
         } catch (SQLException e) {

@@ -61,22 +61,22 @@ Feature: Contacts page
       | user10         | Brenden   | Schneider |
       | storemanager85 | Stephan   | Haley     |
 
-     @db
+ @db @wip
     Scenario: Contact test with email
       Given the user logged in as "sales manager"
       And the user navigates to "Customers" "Contacts"
-      When the user clicks the "cherrylarmstrong@yahoo.com" from contacts
+      When the user clicks the "mrjakc@mail.ru" from contacts
       Then the information should be same with database
 
    @db
-  Scenario: Contact test with email
+   Scenario: Contact test with email
     Given the user logged in as "sales manager"
     And the user navigates to "Customers" "Contacts"
-    When the user clicks the "vanettaabshire@goldner-toy.co" from contacts
-    Then the information for "vanettaabshire@goldner-toy.co" should be same with database
+    When the user clicks the "jakop@gmail.com" from contacts
+    Then the information for "jakop@gmail.com" should be same with database
 
 
-  @wip @db
+   @db
   Scenario Outline: Contact test with email
     Given the user logged in as "sales manager"
     And the user navigates to "Customers" "Contacts"
@@ -85,9 +85,9 @@ Feature: Contacts page
 
     Examples:
     |email|
-    |cherrylarmstrong@yahoo.com|
-    |vanettaabshire@goldner-toy.co|
-    |brandiankunding@mrazinc.com  |
+    |mbrackstone9@example.com|
+    |jakop@gmail.com|
+    |oscar@gmail.com  |
 
 
 
